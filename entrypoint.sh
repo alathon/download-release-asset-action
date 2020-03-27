@@ -30,7 +30,7 @@ fi;
 
 if [ ! -z "$TOKEN" ]; then
   echo "wget with --auth-no-challenge with token $TOKEN"
-  wget -q --auth-no-challenge --header='Accept:application/octet-stream' https://$TOKEN:$GITHUBAPI/repos/$REPO/releases/assets/$asset_id -O $FILE
+  wget --auth-no-challenge --header='Accept:application/octet-stream' https://$TOKEN:@$GITHUBAPI/repos/$REPO/releases/assets/$asset_id -O $FILE
   echo "Done downloading $FILE"
   cat $FILE
 else
