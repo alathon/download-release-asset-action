@@ -18,7 +18,7 @@ inputs:
   out:
     description: 'The directory to place the file in'
     required: true
-    default: './'
+    default: '.'
   token:
     description: 'The GitHub access token'
     required: false
