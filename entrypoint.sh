@@ -6,7 +6,8 @@ GITHUBAPI="api.github.com"
 VERSION=$1
 REPO=$2
 FILE=$3
-TOKEN=$4
+OUT=$4
+TOKEN=$5
 
 echo "Version: $VERSION - Repo: $REPO - File: $FILE"
 
@@ -28,7 +29,7 @@ if [ "$asset_id" = "null" ]; then
 fi;
 
 if [ ! -z "$TOKEN" ]; then
-  curl -sLJO -H "Authorization: token ${TOKEN}" -H 'Accept:application/octet-stream' https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id
+  curl -sLJ -H "Authorization: token ${TOKEN}" -H 'Accept:application/octet-stream' https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id > $OUT
 else
   curl -sLJO -H "Accept:application/octet-stream" https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id
 fi;
