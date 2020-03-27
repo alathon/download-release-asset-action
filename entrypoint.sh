@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+set -e
+
 GITHUBAPI="api.github.com"
 VERSION=$1
 REPO=$2
@@ -28,5 +30,5 @@ fi;
 if [ ! -z "$TOKEN" ]; then
   wget -q --auth-no-challenge --header='Accept:application/octet-stream' https://$TOKEN:@$GITHUBAPI/repos/$REPO/releases/assets/$asset_id -O $FILE
 else
-  wget -q --header='Accept:application/octet-stream' https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id -O $FILE
+  wget --header='Accept:application/octet-stream' https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id -O $FILE
 fi;
