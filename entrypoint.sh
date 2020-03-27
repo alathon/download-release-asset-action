@@ -29,8 +29,8 @@ if [ "$asset_id" = "null" ]; then
 fi;
 
 if [ ! -z "$TOKEN" ]; then
-  echo "wget with --auth-no-challenge with token $TOKEN"
-  wget --auth-no-challenge --header='Accept:application/octet-stream' https://$TOKEN:@$GITHUBAPI/repos/$REPO/releases/assets/$asset_id -O $FILE
+  #wget --auth-no-challenge --header='Accept:application/octet-stream' https://$TOKEN:@$GITHUBAPI/repos/$REPO/releases/assets/$asset_id -O $FILE
+  curl -sLJO -H "Authorization: token ${TOKEN}" -H 'Accept:application/octet-stream' https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id
   echo "Done downloading $FILE"
   cat $FILE
 else
