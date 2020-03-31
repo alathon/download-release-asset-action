@@ -29,7 +29,7 @@ if [ "$asset_id" = "null" ]; then
 fi;
 
 if [ ! -z "$TOKEN" ]; then
-  curl -sLJ -H "Authorization: token ${TOKEN}" -H 'Accept:application/octet-stream' https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id > $OUT/$FILE
+  curl -sLJ -H "Authorization: token ${TOKEN}" -H 'Accept:application/octet-stream' --create-dirs https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id > $OUT/$FILE
 else
-  curl -sLJO -H "Accept:application/octet-stream" https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id
+  curl -sLJO -H "Accept:application/octet-stream" --create-dirs https://$GITHUBAPI/repos/$REPO/releases/assets/$asset_id > $OUT/$FILE
 fi;
